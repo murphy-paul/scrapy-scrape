@@ -1,0 +1,23 @@
+{
+  "name": "scrapy-scrape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docker-build": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && echo $PACKAGE_VERSION && docker build -t scrapy-scrape:v$PACKAGE_VERSION .",
+    "release": "npm version minor && npm run docker-build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^20.1.0",
+    "@slack/webhook": "^6.0.0",
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.5",
+    "hapi-cron": "^1.1.0",
+    "lodash": "^4.17.21",
+    "puppeteer": "^8.0.0",
+    "yargs": "^16.2.0"
+  }
+}
